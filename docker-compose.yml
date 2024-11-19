@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15.6
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    env_file:
+      - .env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -h $$DB_HOST -p 5432 -U $$POSTGRES_USER" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  migrator:
+    build: .
+    command: >
+      sh -c "alembic upgrade head && echo 'Migrations applied successfully.'"
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+
+  web:
+    build: .
+    restart: always
+    volumes:
+      - .:/code
+    ports:
+      - "8001:8001"
+    depends_on:
+      db:
+        condition: service_healthy
+      migrator:
+        condition: service_completed_successfully
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:
