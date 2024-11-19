@@ -15,8 +15,22 @@ from insurance_app.core.models import db_helper
 router = APIRouter(tags=["Rates"])
 
 
-@router.post("/load_rates")
+@router.post(
+    "/load_rates",
+    summary="Load Rates",
+    description="Loads insurance rates from a JSON file into the database.",
+)
 def load_rates(session: Session = Depends(db_helper.get_db)):
+    """
+    Load insurance rates from a JSON file and store them in the database.
+
+    This endpoint reads rates from the 'rates.json' file located in the data directory
+    and saves them into the database.
+
+    **Returns:**
+
+    - A JSON object indicating the success status.
+    """
     rates_file = (
         Path(__file__).parent.parent.parent.parent.parent / "data" / "rates.json"
     )
@@ -35,10 +49,32 @@ def load_rates(session: Session = Depends(db_helper.get_db)):
     return {"status": "Rates loaded successfully"}
 
 
-@router.post("/calculate")
+@router.post(
+    "/calculate",
+    summary="Calculate Insurance Cost",
+    description="Calculates the insurance cost based on cargo type, date, and declared value.",
+)
 def calculate_insurance(
     request: InsuranceRequest, session: Session = Depends(db_helper.get_db)
 ):
+    """
+    Calculate the insurance cost for a given cargo type, date, and declared value.
+
+    **Parameters:**
+
+    - **request**: An object containing:
+        - **cargo_date** (*date*): Date of the cargo.
+        - **cargo_type** (*str*): Type of the cargo.
+        - **declared_value** (*float*): Declared value of the cargo.
+
+    **Returns:**
+
+    - A JSON object containing the calculated insurance cost.
+
+    **Raises:**
+
+    - **HTTPException**: If the rate for the given cargo type and date is not found.
+    """
     rate_record = crud.get_rate(session, request.cargo_date, request.cargo_type)
     if not rate_record:
         raise HTTPException(
