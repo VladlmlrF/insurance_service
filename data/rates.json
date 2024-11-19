@@ -1,0 +1,420 @@
+{
+    "2020-06-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.04"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.03"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.025"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.02"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.01"
+        }
+    ],
+    "2020-07-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.035"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.028"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.022"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.018"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.009"
+        }
+    ],
+    "2020-08-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.033"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.027"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.021"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.017"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.0085"
+        }
+    ],
+    "2020-09-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.032"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.026"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.02"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.016"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.008"
+        }
+    ],
+    "2020-10-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.031"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.025"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.019"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.015"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.0075"
+        }
+    ],
+    "2020-11-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.03"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.024"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.018"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.014"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.007"
+        }
+    ],
+    "2020-12-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.029"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.023"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.017"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.013"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.0065"
+        }
+    ],
+    "2021-01-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.028"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.022"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.016"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.012"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.006"
+        }
+    ],
+    "2021-02-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.027"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.021"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.015"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.011"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.0055"
+        }
+    ],
+    "2021-03-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.026"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.02"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.014"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.01"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.005"
+        }
+    ],
+    "2021-04-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.025"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.019"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.013"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.0095"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.0045"
+        }
+    ],
+    "2021-05-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.024"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.018"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.012"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.009"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.004"
+        }
+    ],
+    "2021-06-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.023"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.017"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.011"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.0085"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.0035"
+        }
+    ],
+    "2021-07-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.022"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.016"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.01"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.008"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.003"
+        }
+    ],
+    "2021-08-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.021"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.015"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.0095"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.0075"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.0025"
+        }
+    ],
+    "2021-09-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.02"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.014"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.009"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.007"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.002"
+        }
+    ],
+    "2021-10-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.019"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.013"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.0085"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.0065"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.0015"
+        }
+    ],
+    "2021-11-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.018"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.012"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.008"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.006"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.001"
+        }
+    ],
+    "2021-12-01": [
+        {
+            "cargo_type": "Glass",
+            "rate": "0.017"
+        },
+        {
+            "cargo_type": "Electronics",
+            "rate": "0.011"
+        },
+        {
+            "cargo_type": "Furniture",
+            "rate": "0.0075"
+        },
+        {
+            "cargo_type": "Food",
+            "rate": "0.0055"
+        },
+        {
+            "cargo_type": "Other",
+            "rate": "0.0005"
+        }
+    ]
+}
