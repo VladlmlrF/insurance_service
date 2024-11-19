@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "insurance"
+version = "0.1.0"
+description = ""
+authors = ["VladlmlrF <vladimirfalin84@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.5"
+uvicorn = {extras = ["standart"], version = "^0.32.0"}
+pydantic = "^2.9.2"
+sqlalchemy = "^2.0.36"
+alembic = "^1.14.0"
+psycopg2-binary = "^2.9.10"
+pydantic-settings = "^2.6.1"
+python-multipart = "^0.0.17"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
