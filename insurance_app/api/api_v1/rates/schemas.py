@@ -12,4 +12,4 @@ class RateSchema(BaseModel):
 class InsuranceRequest(BaseModel):
     cargo_date: date
     cargo_type: str
-    rate: float
+    declared_value: float
