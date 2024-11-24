@@ -1,4 +1,6 @@
 from datetime import date as date_type
+from datetime import datetime
+from datetime import timezone
 
 from fastapi import HTTPException
 from fastapi import status
@@ -10,7 +12,11 @@ from sqlalchemy.orm import Session
 from insurance_app.api.api_v1.rates.schemas import RateSchema
 from insurance_app.api.api_v1.rates.schemas import RateUpdateSchema
 from insurance_app.core.models import Rate
+from insurance_app.kafka_producer import KafkaProducer
 from insurance_app.logger import logger
+
+KAFKA_SERVERS = ["kafka:9092"]
+kafka_producer = KafkaProducer(servers=KAFKA_SERVERS)
 
 
 def get_rate(session: Session, date: date_type, cargo_type: str) -> Rate:
@@ -45,12 +51,26 @@ def get_rate(session: Session, date: date_type, cargo_type: str) -> Rate:
         )
 
 
-def create_rates(session: Session, rates: list[RateSchema]) -> None:
+def create_rates(
+    session: Session,
+    rates: list[RateSchema],
+    user_id: int | None = None,
+) -> None:
     """Create rates"""
     if not rates:
         logger.info("No rates to process")
         return
     logger.info("Creating rates")
+    message = {
+        "user_id": user_id,
+        "action": "create_rates",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "details": {
+            "rates_count": len(rates),
+            "rates": [rate.model_dump() for rate in rates],
+        },
+    }
+    kafka_producer.send("rate_changes", message)
     try:
         for rate in rates:
             db_rate = Rate(
@@ -75,6 +95,7 @@ def update_rate(
     cargo_date: date_type,
     cargo_type: str,
     rate_update: RateUpdateSchema,
+    user_id: int | None = None,
 ) -> Rate:
     """Update rate by cargo_date and cargo_type"""
     logger.info(f"Updating rate for date: {cargo_date} and cargo type: {cargo_type}")
@@ -87,6 +108,17 @@ def update_rate(
         logger.info(
             f"Rate updated successfully for date: {cargo_date} and cargo type: {cargo_type}"
         )
+        message = {
+            "user_id": user_id,
+            "action": "update_rate",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "details": {
+                "cargo_date": str(cargo_date),
+                "cargo_type": cargo_type,
+                "updated_fields": rate_update.model_dump(exclude_unset=True),
+            },
+        }
+        kafka_producer.send("rate_changes", message)
         return rate
     except SQLAlchemyError as error:
         session.rollback()
@@ -105,6 +137,7 @@ def delete_rate(
     session: Session,
     cargo_date: date_type,
     cargo_type: str,
+    user_id: int | None = None,
 ) -> None:
     """Delete rate by cargo_date and cargo_type"""
     logger.info(f"Deleting rate for date: {cargo_date} and cargo type: {cargo_type}")
@@ -115,6 +148,13 @@ def delete_rate(
         logger.info(
             f"Rate deleted successfully for date: {cargo_date} and cargo type: {cargo_type}"
         )
+        message = {
+            "user_id": user_id,
+            "action": "delete_rate",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "details": {"cargo_date": str(cargo_date), "cargo_type": cargo_type},
+        }
+        kafka_producer.send("rate_changes", message)
     except SQLAlchemyError as error:
         session.rollback()
         logger.error(
