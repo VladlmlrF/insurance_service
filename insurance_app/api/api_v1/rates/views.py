@@ -1,15 +1,19 @@
 import json
+from datetime import date
 from pathlib import Path
 
 from fastapi import APIRouter
+from fastapi import Body
 from fastapi import Depends
 from fastapi import HTTPException
+from fastapi import Path as FastapiPath
 from fastapi import status
 from sqlalchemy.orm import Session
 
 from insurance_app.api.api_v1.rates import crud
 from insurance_app.api.api_v1.rates.schemas import InsuranceRequest
 from insurance_app.api.api_v1.rates.schemas import RateSchema
+from insurance_app.api.api_v1.rates.schemas import RateUpdateSchema
 from insurance_app.core.models import db_helper
 
 router = APIRouter(tags=["Rates"])
@@ -82,3 +86,65 @@ def calculate_insurance(
         )
     insurance_cost = request.declared_value * rate_record.rate
     return {"insurance_cost": insurance_cost}
+
+
+@router.put(
+    "/rates/{cargo_date}/{cargo_type}",
+    summary="Update Rate",
+    description="Updates an existing insurance rate.",
+)
+def update_rate(
+    cargo_date: date = FastapiPath(description="Date of the cargo"),
+    cargo_type: str = FastapiPath(description="Type of the cargo"),
+    rate_update: RateUpdateSchema = Body(description="Fields to update in the rate"),
+    session: Session = Depends(db_helper.get_db),
+):
+    """
+    Update an existing rate based on cargo date and cargo type.
+
+    **Parameters:**
+
+    - **cargo_date**: Date of the cargo.
+    - **cargo_type**: Type of the cargo.
+    - **rate_update**: RateUpdate object containing fields to update.
+
+    **Returns:**
+
+    - The updated Rate object.
+
+    **Raises:**
+
+    - **HTTPException**: If the rate is not found or update fails.
+    """
+    updated_rate = crud.update_rate(session, cargo_date, cargo_type, rate_update)
+    return updated_rate
+
+
+@router.delete(
+    "/rates/{cargo_date}/{cargo_type}",
+    summary="Delete Rate",
+    description="Deletes an existing insurance rate.",
+)
+def delete_rate(
+    cargo_date: date = FastapiPath(description="Date of the cargo"),
+    cargo_type: str = FastapiPath(description="Type of the cargo"),
+    session: Session = Depends(db_helper.get_db),
+):
+    """
+    Delete an existing rate based on cargo date and cargo type.
+
+    **Parameters:**
+
+    - **cargo_date**: Date of the cargo.
+    - **cargo_type**: Type of the cargo.
+
+    **Returns:**
+
+    - A message indicating successful deletion.
+
+    **Raises:**
+
+    - **HTTPException**: If the rate is not found or deletion fails.
+    """
+    crud.delete_rate(session, cargo_date, cargo_type)
+    return {"detail": "Rate deleted successfully"}
