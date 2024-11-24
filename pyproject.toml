@@ -6,7 +6,7 @@ authors = ["VladlmlrF <vladimirfalin84@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.11.10"
 fastapi = "^0.115.5"
 uvicorn = {extras = ["standart"], version = "^0.32.0"}
 pydantic = "^2.9.2"
@@ -16,6 +16,7 @@ psycopg2-binary = "^2.9.10"
 pydantic-settings = "^2.6.1"
 python-multipart = "^0.0.17"
 pre-commit = "^4.0.1"
+kafka-python = "^2.0.2"
 
 
 [build-system]
